@@ -43,7 +43,7 @@ export const renderPokemonSprites = (pokemonUrls) => {
             const img = document.createElement('img')
             img.src = sprite;
             li.append(img)
-            document.querySelector('#pokebox').append(li)
+            document.querySelector('#pokemon').append(li)
 
         }
         catch (error) {
