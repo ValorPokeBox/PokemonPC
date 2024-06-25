@@ -15,10 +15,45 @@ export const getPokemonFromType = async (url) => {
             pokemonArray.push(pokemonOfType[Math.floor(Math.random() * (pokemonOfType.length))])
         }
         console.log(pokemonArray)
-        return pokemonArray
+        let pokemonUrls = pokemonArray.map((pokemonObj) => pokemonObj.pokemon.url)
+        console.log(pokemonUrls)
+        return pokemonUrls
     }
     catch (error) {
         console.warn(error.message)
         return null
     }
 }
+
+export const renderPokemonSprites = (pokemonUrls) => {
+
+    pokemonUrls.forEach(async (pokemon) => {
+        console.log(pokemon)
+        try {
+            const response = await fetch(pokemon)
+            if (!response.ok) {
+                throw new Error('Failed to get pokemon data')
+            }
+            // console.log(response)
+            const jsonData = await response.json()
+            console.log(jsonData)
+            const sprite = jsonData.sprites.front_default
+            console.log(sprite)
+            const li = document.createElement('li')
+            const img = document.createElement('img')
+            img.src = sprite;
+            li.append(img)
+            document.querySelector('#pokebox').append(li)
+
+        }
+        catch (error) {
+            console.warn(error.message)
+            return null
+        }
+
+    }
+    )
+}
+
+
+// const gettingPokemonData =
