@@ -41,9 +41,10 @@ export const renderPokemonSprites = (pokemonUrls) => {
             // console.log(sprite)
             const li = document.createElement('li')
             li.classList.add('pokemon')
-            li.id = jsonData.id;
+            // li.id = jsonData.id;
             const img = document.createElement('img')
             img.src = sprite;
+            img.id = jsonData.id
             li.append(img)
             document.querySelector('#pokemon').append(li)
 
@@ -67,6 +68,7 @@ export const gettingPokemonData = async (pokemonId) => {
         console.log(response)
         const data = await response.json()
         console.log(data)
+        return data
     }
     catch (error) {
         console.warn(error.message)
@@ -77,18 +79,18 @@ export const gettingPokemonData = async (pokemonId) => {
 export const renderOnePokemon = async (event) => {
     event.preventDefault();
 
-    const pokemon = event.target.matches('.pokemon')
+    const pokemon = event.target
     console.log(pokemon)
-    const pokemonId = pokemon.id;
+    const pokemonId = event.target.id;
     console.log(pokemonId)
     console.log('Hi')
-    if (pokemon) {
+    if (pokemon.matches('img')) {
         const pokemonData = await gettingPokemonData(pokemonId)
         document.querySelector('#pokemon-name').textContent = pokemonData.name;
-        document.querySelector('#pokemon-height').textContent = `Level: ${pokemonData.height}`;
+        document.querySelector('#pokemon-height').textContent = `Height: ${pokemonData.height}`;
         document.querySelector('#pokemon-weight').textContent = `Weight: ${pokemonData.weight}`;
-        document.querySelector('#pokemon-level').textContent = `Lvl: ${Math.floor(Math.random() * 100) + 1}`;
-        document.querySelector('#pokemon-image').src = pokemon.sprites.front_default;
+        document.querySelector('#pokemon-level').textContent = `Level: ${Math.floor(Math.random() * 100) + 1}`;
+        document.querySelector('#pokemon-image').src = pokemonData.sprites.front_default;
         document.querySelector('#pokemon-image').alt = `This is an image of ${pokemonData.name}`
         document.querySelector('.button-box').id = pokemonData.id;
 
