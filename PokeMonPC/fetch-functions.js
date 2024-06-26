@@ -4,7 +4,7 @@ export const getPokemonFromType = async (url) => {
         if (!response.ok) {
             throw new Error('Failed to Pokemon from type')
         }
-        console.log(response) //logging the response to see the status
+        // console.log(response) //logging the response to see the status
         const jsonData = await response.json() //making the response into json data
         console.log(jsonData)
         // const randomNum = Math.floor(Math.random() * (jsonData.pokemon.length))
@@ -28,17 +28,17 @@ export const getPokemonFromType = async (url) => {
 export const renderPokemonSprites = (pokemonUrls) => {
 
     pokemonUrls.forEach(async (pokemon) => {
-        console.log(pokemon)
+        // console.log(pokemon)
         try {
             const response = await fetch(pokemon)
             if (!response.ok) {
                 throw new Error('Failed to get pokemon data')
             }
-            // console.log(response)
+            console.log(response)
             const jsonData = await response.json()
             console.log(jsonData)
             const sprite = jsonData.sprites.front_default
-            console.log(sprite)
+            // console.log(sprite)
             const li = document.createElement('li')
             const img = document.createElement('img')
             img.src = sprite;
@@ -56,4 +56,18 @@ export const renderPokemonSprites = (pokemonUrls) => {
 }
 
 
-// const gettingPokemonData =
+export const gettingPokemonData = async (pokemon) => {
+    try{
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+        if(!response.ok) {
+            throw new Error('Failed to get pokemon data')
+        }
+        console.log(response)
+        const data = await response.json()
+        console.log(data)
+    }
+    catch(error) {
+        console.warn(error.message)
+        return null
+    }
+}
