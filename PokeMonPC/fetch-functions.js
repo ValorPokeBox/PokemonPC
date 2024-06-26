@@ -1,6 +1,6 @@
-export const getPokemonFromType = async (url) => {
+export const getPokemonFromType = async (formObject) => {
     try {
-        const response = await fetch(url);
+        const response = await fetch(`https://pokeapi.co/api/v2/type/${formObject.type}/`);
         if (!response.ok) {
             throw new Error('Failed to Pokemon from type')
         }
@@ -26,7 +26,7 @@ export const getPokemonFromType = async (url) => {
 }
 
 export const renderPokemonSprites = (pokemonUrls) => {
-
+    document.querySelector('#pokemon').innerHTML = '';
     pokemonUrls.forEach(async (pokemon) => {
         // console.log(pokemon)
         try {
@@ -40,6 +40,8 @@ export const renderPokemonSprites = (pokemonUrls) => {
             const sprite = jsonData.sprites.front_default
             // console.log(sprite)
             const li = document.createElement('li')
+            li.classList.add('pokemon')
+            li.id = jsonData.id;
             const img = document.createElement('img')
             img.src = sprite;
             li.append(img)
@@ -56,18 +58,58 @@ export const renderPokemonSprites = (pokemonUrls) => {
 }
 
 
-export const gettingPokemonData = async (pokemon) => {
-    try{
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-        if(!response.ok) {
+export const gettingPokemonData = async (pokemonId) => {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+        if (!response.ok) {
             throw new Error('Failed to get pokemon data')
         }
         console.log(response)
         const data = await response.json()
         console.log(data)
     }
-    catch(error) {
+    catch (error) {
         console.warn(error.message)
         return null
     }
 }
+
+export const renderOnePokemon = async (event) => {
+    event.preventDefault();
+
+    const pokemon = event.target.matches('.pokemon')
+    console.log(pokemon)
+    const pokemonId = pokemon.id;
+    console.log(pokemonId)
+    console.log('Hi')
+    if (pokemon) {
+        const pokemonData = await gettingPokemonData(pokemonId)
+        document.querySelector('#pokemon-name').textContent = pokemonData.name;
+        document.querySelector('#pokemon-height').textContent = `Level: ${pokemonData.height}`;
+        document.querySelector('#pokemon-weight').textContent = `Weight: ${pokemonData.weight}`;
+        document.querySelector('#pokemon-level').textContent = `Lvl: ${Math.floor(Math.random() * 100) + 1}`;
+        document.querySelector('#pokemon-image').src = pokemon.sprites.front_default;
+        document.querySelector('#pokemon-image').alt = `This is an image of ${pokemonData.name}`
+        document.querySelector('.button-box').id = pokemonData.id;
+
+    }
+}
+
+
+export const handleTypeForm = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formObject = Object.fromEntries(formData);
+    console.log(formObject)
+    console.log(formObject.type)
+    renderPokemonSprites(await getPokemonFromType(formObject))
+    event.target.reset();
+
+
+}
+// const releasePokemon = (event) => {
+//     event.preventDefault();
+//     if (event.target.matches('.release')) {
+//         delete
+//     }
+// }
