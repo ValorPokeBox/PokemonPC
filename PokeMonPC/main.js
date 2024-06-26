@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 import { getPokemonFromType } from './fetch-functions'
 import { renderPokemonSprites } from './fetch-functions'
 import { gettingPokemonData } from './fetch-functions'
