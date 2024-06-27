@@ -1,3 +1,9 @@
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  /* box-sizing: border-box; */
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -33,27 +39,10 @@ main {
   /* place-items: center; */
 }
 
-#left-side {
-  /* top: 50px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 30%;
-  padding-right: 40px;
-
-
-}
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -185,9 +174,9 @@ button:focus-visible {
   /* color: #a8a8a1; */
   width: 27%;
   margin: 10px;
-  margin-bottom: .5px;
+  /* margin-bottom: .px; */
   padding: 25px;
-  padding-right: 300px;
+  padding-right: 275px;
   border: solid 3px #a8a8a1;
   border-radius: 20px;
   /* background-color: #f8f1d9; */
@@ -224,7 +213,7 @@ button:focus-visible {
 }
 
 .storage-box {
-  background: url('/Users/cindynguyen/Development/unit-3/PokemonPC/PokeMonPC/images/grassBackground.png');
+  background: url('images/grassBackground.png');
   background-repeat: no-repeat;
   background-size: cover;
   border-style: solid;
@@ -232,7 +221,7 @@ button:focus-visible {
   border-color: #9f874f;
   border-radius: 20px;
   height: 1000px;
-  width: 1200px;
+  width: 900px;
   outline: black solid 5px;
 }
 
@@ -249,9 +238,8 @@ button:focus-visible {
 
 ul {
   display: flex;
-  flex-flow: row;
+  flex-flow: row; 
   flex-wrap: wrap;
-
 }
 
 form {
@@ -271,11 +259,13 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 1100px;
+  height: 1000px;
 }
 
 #box-title {
   color: black;
-  background: url('/Users/cindynguyen/Development/unit-3/PokemonPC/PokeMonPC/images/grassyHeader.png');
+  background: url('images/grassyHeader.png');
   border: solid tan 3px;
   outline: black solid 5px;
   border-radius: 15px;
@@ -284,4 +274,21 @@ form {
   width: 50%;
   display: flex;
   justify-content: center;
+}
+
+#left-side {
+  /* top: 50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 15%; */
+  padding-right: 40px;
+
+
+}
+
+.grid-page-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  /* gap: 7px; */
 }
