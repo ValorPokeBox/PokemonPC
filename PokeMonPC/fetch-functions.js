@@ -11,7 +11,7 @@ export const getPokemonFromType = async (formObject) => {
         const pokemonOfType = jsonData.pokemon
         console.log(pokemonOfType)
         const pokemonArray = [];
-        while (pokemonArray.length < 10) {
+        while (pokemonArray.length < 35) {
             pokemonArray.push(pokemonOfType[Math.floor(Math.random() * (pokemonOfType.length))])
         }
         console.log(pokemonArray)
@@ -87,8 +87,8 @@ export const renderOnePokemon = async (event) => {
     if (pokemon.matches('img')) {
         const pokemonData = await gettingPokemonData(pokemonId)
         document.querySelector('#pokemon-name').textContent = pokemonData.name;
-        document.querySelector('#pokemon-height').textContent = `Height: ${pokemonData.height}`;
-        document.querySelector('#pokemon-weight').textContent = `Weight: ${pokemonData.weight}`;
+        document.querySelector('#pokemon-height').textContent = `Height: ${pokemonData.height} m`;
+        document.querySelector('#pokemon-weight').textContent = `Weight: ${pokemonData.weight} kg`;
         document.querySelector('#pokemon-level').textContent = `Level: ${Math.floor(Math.random() * 100) + 1}`;
         document.querySelector('#pokemon-image').src = pokemonData.sprites.front_default;
         document.querySelector('#pokemon-image').alt = `This is an image of ${pokemonData.name}`
@@ -104,6 +104,7 @@ export const handleTypeForm = async (event) => {
     const formObject = Object.fromEntries(formData);
     console.log(formObject)
     console.log(formObject.type)
+    document.querySelector('#box-title').textContent = `Box ${formObject.type}`;
     renderPokemonSprites(await getPokemonFromType(formObject))
     event.target.reset();
 
