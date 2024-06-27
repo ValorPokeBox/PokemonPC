@@ -11,7 +11,7 @@ export const getPokemonFromType = async (formObject) => {
         const pokemonOfType = jsonData.pokemon
         // console.log(pokemonOfType)
         const pokemonArray = [];
-        while (pokemonArray.length < 35) {
+        while (pokemonArray.length < 20) {
             pokemonArray.push(pokemonOfType[Math.floor(Math.random() * (pokemonOfType.length))])
         }
         // console.log(pokemonArray)

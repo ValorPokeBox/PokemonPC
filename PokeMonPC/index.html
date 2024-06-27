@@ -10,67 +10,69 @@
 <body>
   <h1>Pokemon PC</h1>
   <main>
-    <div id="left-side">
-      <form id="type-selector" aria-labelledby="form-heading">
-        <h2 id="form-heading">Select type</h2>
-        <div>
-          <label for="type">Type:</label>
-          <select name="type" id="type">
-            <option value="1">Normal</option>
-            <option value="2">Fighting</option>
-            <option value="3">Flying</option>
-            <option value="4">Poison</option>
-            <option value="5">Ground</option>
-            <option value="6">Rock</option>
-            <option value="7">Bug</option>
-            <option value="8">Ghost</option>
-            <option value="9">Steel</option>
-            <option value="10">Fire</option>
-            <option value="11">Water</option>
-            <option value="12">Grass</option>
-            <option value="13">Electric</option>
-            <option value="14">Psychic</option>
-            <option value="15">Ice</option>
-            <option value="16">Dragon</option>
-            <option value="17">Dark</option>
-            <option value="18">Fairy</option>
-          </select>
-          <!-- <input type="numnber" name="type" id="type" min="1" max="18"> -->
+    <div class="grid-page-layout">
+      <div id="left-side">
+        <form id="type-selector" aria-labelledby="form-heading">
+          <h2 id="form-heading">Select type</h2>
+          <div>
+            <label for="type">Type:</label>
+            <select name="type" id="type">
+              <option value="1">Normal</option>
+              <option value="2">Fighting</option>
+              <option value="3">Flying</option>
+              <option value="4">Poison</option>
+              <option value="5">Ground</option>
+              <option value="6">Rock</option>
+              <option value="7">Bug</option>
+              <option value="8">Ghost</option>
+              <option value="9">Steel</option>
+              <option value="10">Fire</option>
+              <option value="11">Water</option>
+              <option value="12">Grass</option>
+              <option value="13">Electric</option>
+              <option value="14">Psychic</option>
+              <option value="15">Ice</option>
+              <option value="16">Dragon</option>
+              <option value="17">Dark</option>
+              <option value="18">Fairy</option>
+            </select>
+            <!-- <input type="numnber" name="type" id="type" min="1" max="18"> -->
+          </div>
+          <button class="submit">Submit</button>
+        </form>
+        <div class='button-box'>
+          <section id="pokemon-showcase">
+            <h2 id="pokemon-name">Pikachu</h2>
+            <img id="pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+              alt="This is a image of Pikachu">
+          </section>
+          <section class="pokemon-stats">
+            <p id="pokemon-level">Level: 100</p>
+            <p id="pokemon-height">Height: 4 m</p>
+            <p id="pokemon-weight">Weight: 60 kg</p>
+            <button class="release">Release</button>
         </div>
-        <button class="submit">Submit</button>
-      </form>
-      <div class='button-box'>
-        <section id="pokemon-showcase">
-          <h2 id="pokemon-name">Pikachu</h2>
-          <img id="pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-            alt="This is a image of Pikachu">
-        </section>
-        <section class="pokemon-stats">
-          <p id="pokemon-level">Level: 100</p>
-          <p id="pokemon-height">Height: 4 m</p>
-          <p id="pokemon-weight">Weight: 60 kg</p>
-          <button class="release">Release</button>
+        <!-- </div>
+    <button class="release">Release</button>
+    <div id="box-name"> -->
       </div>
+      </section>
       <!-- </div>
-  <button class="release">Release</button>
-  <div id="box-name"> -->
-    </div>
-    </section>
-    <!-- </div>
-  <button class="release">Release</button>
-  <div id="box-name">
-  </div> -->
-    <div id="right-side">
-      <h2 id="box-title">Your Box</h2>
-      <div class="storage-box">
-        <ul id="pokemon">
-        </ul>
-      </div>
-      <div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/VToyayJ4u2k?si=Z1FvTNxtYNLpYz9L&autoplay=1"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <button class="release">Release</button>
+    <div id="box-name">
+    </div> -->
+      <div id="right-side">
+        <h2 id="box-title">Your Box</h2>
+        <div class="storage-box">
+          <ul id="pokemon">
+          </ul>
+        </div>
+        <div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/VToyayJ4u2k?si=Z1FvTNxtYNLpYz9L&autoplay=1"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </main>
