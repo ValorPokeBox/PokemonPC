@@ -9,14 +9,14 @@ export const getPokemonFromType = async (formObject) => {
         console.log(jsonData)
         // const randomNum = Math.floor(Math.random() * (jsonData.pokemon.length))
         const pokemonOfType = jsonData.pokemon
-        console.log(pokemonOfType)
+        // console.log(pokemonOfType)
         const pokemonArray = [];
         while (pokemonArray.length < 35) {
             pokemonArray.push(pokemonOfType[Math.floor(Math.random() * (pokemonOfType.length))])
         }
-        console.log(pokemonArray)
+        // console.log(pokemonArray)
         let pokemonUrls = pokemonArray.map((pokemonObj) => pokemonObj.pokemon.url)
-        console.log(pokemonUrls)
+        // console.log(pokemonUrls)
         return pokemonUrls
     }
     catch (error) {
@@ -34,14 +34,14 @@ export const renderPokemonSprites = (pokemonUrls) => {
             if (!response.ok) {
                 throw new Error('Failed to get pokemon data')
             }
-            console.log(response)
+            // console.log(response)
             const jsonData = await response.json()
-            console.log(jsonData)
+            // console.log(jsonData)
             const sprite = jsonData.sprites.front_default
             // console.log(sprite)
             const li = document.createElement('li')
             li.classList.add('pokemon')
-            // li.id = jsonData.id;
+            li.id = jsonData.id + 1;
             const img = document.createElement('img')
             img.src = sprite;
             img.id = jsonData.id
@@ -65,9 +65,9 @@ export const gettingPokemonData = async (pokemonId) => {
         if (!response.ok) {
             throw new Error('Failed to get pokemon data')
         }
-        console.log(response)
+        // console.log(response)
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         return data
     }
     catch (error) {
@@ -80,10 +80,10 @@ export const renderOnePokemon = async (event) => {
     event.preventDefault();
 
     const pokemon = event.target
-    console.log(pokemon)
+    // console.log(pokemon)
     const pokemonId = event.target.id;
-    console.log(pokemonId)
-    console.log('Hi')
+    // console.log(pokemonId)
+    // console.log('Hi')
     if (pokemon.matches('img')) {
         const pokemonData = await gettingPokemonData(pokemonId)
         document.querySelector('#pokemon-name').textContent = pokemonData.name;
@@ -110,9 +110,28 @@ export const handleTypeForm = async (event) => {
 
 
 }
-// const releasePokemon = (event) => {
-//     event.preventDefault();
-//     if (event.target.matches('.release')) {
-//         delete
-//     }
-// }
+export const releasePokemon = (event) => {
+    event.preventDefault();
+    if (event.target.matches('.release')) {
+        console.log('hi')
+        console.log(document.querySelector('.button-box').id)
+        document.querySelector('#pokemon-showcase').innerHTML = ` <h2 id="pokemon-name">Pikachu</h2>
+          <img id="pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+            alt="This is a image of Pikachu">`
+        document.querySelector('.pokemon-stats').innerHTML = `  <p id="pokemon-level">Level: 100</p>
+          <p id="pokemon-height">Height: 4 m</p>
+          <p id="pokemon-weight">Weight: 60 kg</p>
+          <button class="release">Release</button>`
+        if (document.querySelector('ul').hasChildNodes()) {
+            let children = document.querySelector('ul').childNodes
+            console.log(children)
+            console.log(Number(document.querySelector('.button-box').id) + 1)
+            for (const list of children) {
+                if (Number(list.id) === Number(document.querySelector('.button-box').id) + 1) {
+                    list.remove()
+                }
+            }
+        }
+
+    }
+}
