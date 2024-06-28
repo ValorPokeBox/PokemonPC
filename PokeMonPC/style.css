@@ -305,7 +305,7 @@ form {
 .grid-page-layout {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 7px;
+  gap: 50px;
   /* flex-wrap: wrap; */
 }
 
