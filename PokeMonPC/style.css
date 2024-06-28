@@ -120,7 +120,7 @@ button:focus-visible {
   border-color: #a8a8a1;
   border-radius: 20px;
   outline: solid black 10px;
-  width: 400px;
+  width: 375px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,7 +128,7 @@ button:focus-visible {
   padding: 5px;
   height: 300px;
   margin-top: 15px;
-  margin-left: 30px;
+  margin-left: 45px;
   background-color: #f8f1d9;
 
 }
@@ -155,7 +155,7 @@ button:focus-visible {
   border-color: #a8a8a1;
   border-radius: 20px;
   outline: solid black 8px;
-  width: 100px;
+  width: 95px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,7 +187,7 @@ button:focus-visible {
   margin: 10px;
   /* margin-bottom: .px; */
   /* padding: 25px; */
-  padding-right: 230px;
+  padding-right: 210px;
   border: solid 3px #a8a8a1;
   border-radius: 20px;
   /* background-color: #f8f1d9; */
