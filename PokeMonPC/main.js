@@ -12,6 +12,11 @@ const main = () => {
     document.querySelector('#pokemon').addEventListener('click', renderOnePokemon)
     document.querySelector('.button-box').addEventListener('click', releasePokemon)
 }
+// document.addEventListener('DOMContentLoaded', function () {
+//     let video = document.querySelector('#myVideo');
+//     video.play();
+// });
+
 main()
 // getPokemonFromType('https://pokeapi.co/api/v2/type/18').then((pokemonUrls) => renderPokemonSprites(pokemonUrls))
 

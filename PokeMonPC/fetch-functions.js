@@ -11,7 +11,7 @@ export const getPokemonFromType = async (formObject) => {
         const pokemonOfType = jsonData.pokemon
         // console.log(pokemonOfType)
         const pokemonArray = [];
-        while (pokemonArray.length < 20) {
+        while (pokemonArray.length < 25) {
             pokemonArray.push(pokemonOfType[Math.floor(Math.random() * (pokemonOfType.length))])
         }
         // console.log(pokemonArray)
@@ -86,10 +86,11 @@ export const renderOnePokemon = async (event) => {
     // console.log('Hi')
     if (pokemon.matches('img')) {
         const pokemonData = await gettingPokemonData(pokemonId)
+        console.log(pokemonData)
         document.querySelector('#pokemon-name').textContent = pokemonData.name;
         document.querySelector('#pokemon-height').textContent = `Height: ${pokemonData.height} m`;
         document.querySelector('#pokemon-weight').textContent = `Weight: ${pokemonData.weight} kg`;
-        document.querySelector('#pokemon-level').textContent = `Level: ${Math.floor(Math.random() * 100) + 1}`;
+        document.querySelector('#pokemon-level').textContent = `Level: ${Math.floor(Math.random() * 100) + 1} Ability: ${pokemonData.abilities[0].ability.name}`;
         document.querySelector('#pokemon-image').src = pokemonData.sprites.front_default;
         document.querySelector('#pokemon-image').alt = `This is an image of ${pokemonData.name}`
         document.querySelector('.button-box').id = pokemonData.id;
@@ -118,7 +119,7 @@ export const releasePokemon = (event) => {
         document.querySelector('#pokemon-showcase').innerHTML = ` <h2 id="pokemon-name">Pikachu</h2>
           <img id="pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
             alt="This is a image of Pikachu">`
-        document.querySelector('.pokemon-stats').innerHTML = `  <p id="pokemon-level">Level: 100</p>
+        document.querySelector('.pokemon-stats').innerHTML = `  <p id="pokemon-level">Level: 100 Ability: Lightning Rod</p>
           <p id="pokemon-height">Height: 4 m</p>
           <p id="pokemon-weight">Weight: 60 kg</p>
           <button class="release">Release</button>`
